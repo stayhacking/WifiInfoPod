@@ -13,15 +13,16 @@ public class WifiInfo: NSObject {
             for interface in interfaces {
                 print("new interface")
                 print(interface)
+                print("test")
                 if let interfaceInfo = CNCopyCurrentNetworkInfo(interface as! CFString) as NSDictionary? {
                     print("new interfaceInfo")
                     print(interface)
                     ssid = interfaceInfo[kCNNetworkInfoKeySSID as String] as? String
                     print("ssid")
-                    print(ssid)
+                    print(ssid!)
                     bssid = interfaceInfo[kCNNetworkInfoKeyBSSID as String] as? String
                     print("bssid")
-                    print(bssid)
+                    print(bssid!)
                     break
                 }
             }
@@ -31,7 +32,7 @@ public class WifiInfo: NSObject {
             resp["ssid"] = ssid
             resp["bssid"] = bssid
         }
-        return WifiInfo.jsonToString(resp)
+        return jsonToString(json: resp as AnyObject)
     }
     
     
@@ -39,12 +40,13 @@ public class WifiInfo: NSObject {
         return "remy remy"
     }
     
-    func jsonToString(json: AnyObject) -> String {
+    private static func jsonToString(json: AnyObject) -> String {
+        print("test")
         do {
             let data1 =  try JSONSerialization.data(withJSONObject: json, options: JSONSerialization.WritingOptions.prettyPrinted) // first of all convert json to the data
             let convertedString = String(data: data1, encoding: String.Encoding.utf8) // the data will be converted to the string
             print(convertedString ?? "defaultvalue")
-            return convertedString
+            return convertedString!
         } catch let myJSONError {
             print(myJSONError)
             return "error"
