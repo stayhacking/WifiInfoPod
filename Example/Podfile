@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'WifiInfoPod_Example' do
+  pod 'WifiInfoPod', :path => '../'
+
+  target 'WifiInfoPod_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
