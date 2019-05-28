@@ -1,0 +1,6 @@
+framework module WifiInfoPod {
+  umbrella header "WifiInfoPod-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,16 @@
+PODS:
+  - WifiInfoPod (0.1.0)
+
+DEPENDENCIES:
+  - WifiInfoPod (from `../`)
+
+EXTERNAL SOURCES:
+  WifiInfoPod:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  WifiInfoPod: b0f6420cdc488b1f125efe11c455cba2361c4147
+
+PODFILE CHECKSUM: 78e4d06d05044758278feca42143de7a2587d30b
+
+COCOAPODS: 1.7.0

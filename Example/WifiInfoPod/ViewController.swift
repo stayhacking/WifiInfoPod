@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import WifiInfoPod
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let remy = WifiInfo.remyremy()
+        print(remy)
         // Do any additional setup after loading the view, typically from a nib.
     }
 
