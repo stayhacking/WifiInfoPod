@@ -3,7 +3,7 @@ import SystemConfiguration.CaptiveNetwork
 
 @objc(WifiInfo)
 public class WifiInfo: NSObject {
-    @objc dynamic public static func getWiFiSsid() -> [String : Any] {
+    @objc dynamic public static func getWiFiSsid() -> String {
         var resp: [String: Any] = ["connected": false]
         var ssid: String?
         var bssid: String?
@@ -31,11 +31,24 @@ public class WifiInfo: NSObject {
             resp["ssid"] = ssid
             resp["bssid"] = bssid
         }
-        return resp
+        return WifiInfo.jsonToString(resp)
     }
     
     
     @objc dynamic public static func remyremy() -> String {
         return "remy remy"
+    }
+    
+    func jsonToString(json: AnyObject) -> String {
+        do {
+            let data1 =  try JSONSerialization.data(withJSONObject: json, options: JSONSerialization.WritingOptions.prettyPrinted) // first of all convert json to the data
+            let convertedString = String(data: data1, encoding: String.Encoding.utf8) // the data will be converted to the string
+            print(convertedString ?? "defaultvalue")
+            return convertedString
+        } catch let myJSONError {
+            print(myJSONError)
+            return "error"
+        }
+        
     }
 }
