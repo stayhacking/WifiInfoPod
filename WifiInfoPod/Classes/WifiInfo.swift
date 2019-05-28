@@ -3,8 +3,7 @@ import SystemConfiguration.CaptiveNetwork
 
 @objc(WifiInfo)
 public class WifiInfo: NSObject {
-    @objc
-    public static func getWiFiSsid() -> [String : Any] {
+    @objc dynamic public static func getWiFiSsid() -> [String : Any] {
         var resp: [String: Any] = ["connected": false]
         var ssid: String?
         var bssid: String?
@@ -26,8 +25,7 @@ public class WifiInfo: NSObject {
     }
     
     
-    @objc
-    public static func remyremy() -> String {
+    @objc dynamic public static func remyremy() -> String {
         return "remy remy"
     }
 }
