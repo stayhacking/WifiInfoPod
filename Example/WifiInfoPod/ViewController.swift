@@ -13,8 +13,11 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let remy = WifiInfo.getWiFiSsid()
-        print(remy)
+//        let remy = WifiInfo.getWiFiSsid()
+        print("Conneecting to wifi")
+        let ssid = ""
+        let passphrase = ""
+        WifiInfo.joinWifi(ssid: ssid, passphrase: passphrase)
         // Do any additional setup after loading the view, typically from a nib.
     }
 

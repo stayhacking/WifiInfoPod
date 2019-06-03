@@ -1,5 +1,6 @@
 import Foundation
 import SystemConfiguration.CaptiveNetwork
+import NetworkExtension
 
 @objc(WifiInfo)
 public class WifiInfo: NSObject {
@@ -38,4 +39,29 @@ public class WifiInfo: NSObject {
     public static func remyremy() -> String {
         return "remy remy"
     }
+    
+    @objc
+    public static func joinWifi(ssid: String, passphrase: String, isWep: Bool = false  ) -> Bool {
+        let success = true
+        let configuration = NEHotspotConfiguration.init(ssid: ssid, passphrase: passphrase, isWEP: isWep)
+        configuration.joinOnce = true
+        
+        NEHotspotConfigurationManager.shared.apply(configuration) { (error) in
+            if error != nil {
+                if error?.localizedDescription == "already associated."
+                {
+                    print("Already Connected")
+                }
+                else{
+                    print("No Connected")
+                }
+            }
+            else {
+                print("Connected")
+            }
+        }
+        
+        return success
+    }
+    
 }
