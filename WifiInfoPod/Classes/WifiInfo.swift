@@ -5,7 +5,7 @@ import NetworkExtension
 @objc(WifiInfo)
 public class WifiInfo: NSObject {
     @objc
-    public static func getWiFiSsid() -> String {
+    public static dynamic func getWiFiSsid() -> String {
         var resp: [String: Any] = ["connected": false]
         var ssid: String?
         var bssid: String?
@@ -36,12 +36,12 @@ public class WifiInfo: NSObject {
     
     
     @objc
-    public static func remyremy() -> String {
+    public static dynamic func remyremy() -> String {
         return "remy remy"
     }
     
     @objc
-    public static func joinWifi(ssid: String, passphrase: String, isWep: Bool = false  ) -> Bool {
+    public static dynamic func joinWifi(ssid: String, passphrase: String, isWep: Bool = false  ) -> Bool {
         let success = true
         let configuration = NEHotspotConfiguration.init(ssid: ssid, passphrase: passphrase, isWEP: isWep)
         configuration.joinOnce = true
