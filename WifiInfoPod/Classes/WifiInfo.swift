@@ -1,10 +1,11 @@
 import Foundation
 import SystemConfiguration.CaptiveNetwork
+import NetworkExtension
 
 @objc(WifiInfo)
 public class WifiInfo: NSObject {
     @objc
-    public static func getWiFiSsid() -> [String : Any] {
+    public static func getWiFiSsid() -> String {
         var resp: [String: Any] = ["connected": false]
         var ssid: String?
         var bssid: String?
@@ -22,7 +23,15 @@ public class WifiInfo: NSObject {
             resp["ssid"] = ssid
             resp["bssid"] = bssid
         }
-        return resp
+        
+        var out = "err"
+        do {
+            let data1 =  try JSONSerialization.data(withJSONObject: resp, options: JSONSerialization.WritingOptions.prettyPrinted) // first of all convert json to the data
+            out = String(data: data1, encoding: String.Encoding.utf8)! // the data will be converted to the string
+        } catch let myJSONError {
+            print(myJSONError)
+        }
+        return out
     }
     
     
@@ -30,4 +39,29 @@ public class WifiInfo: NSObject {
     public static func remyremy() -> String {
         return "remy remy"
     }
+    
+    @objc
+    public static func joinWifi(ssid: String, passphrase: String, isWep: Bool = false  ) -> Bool {
+        let success = true
+        let configuration = NEHotspotConfiguration.init(ssid: ssid, passphrase: passphrase, isWEP: isWep)
+        configuration.joinOnce = true
+        
+        NEHotspotConfigurationManager.shared.apply(configuration) { (error) in
+            if error != nil {
+                if error?.localizedDescription == "already associated."
+                {
+                    print("Already Connected")
+                }
+                else{
+                    print("No Connected")
+                }
+            }
+            else {
+                print("Connected")
+            }
+        }
+        
+        return success
+    }
+    
 }
