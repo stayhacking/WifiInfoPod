@@ -15,6 +15,7 @@
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		687532DF93E1AAD8490D985D /* Pods_WifiInfoPod_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48BFE8019DAC5FF0106403A /* Pods_WifiInfoPod_Tests.framework */; };
 		9C4E06D17154CC2973AE3341 /* Pods_WifiInfoPod_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C48E3A87B4BE98FFCC18D6C3 /* Pods_WifiInfoPod_Example.framework */; };
+		C641375D22A76B78006381A2 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C641375C22A76B78006381A2 /* NetworkExtension.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		AF3629C5BD55D2839C97CB49 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		BF41B4BD06B1EBA7C0709204 /* Pods-WifiInfoPod_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WifiInfoPod_Tests.debug.xcconfig"; path = "Target Support Files/Pods-WifiInfoPod_Tests/Pods-WifiInfoPod_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		C48E3A87B4BE98FFCC18D6C3 /* Pods_WifiInfoPod_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WifiInfoPod_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C641375C22A76B78006381A2 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		C69BAA3C229CDEDA00FC434C /* WifiInfoPod_Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WifiInfoPod_Example.entitlements; sourceTree = "<group>"; };
 		E8274F3CCD80DC2F94F634FA /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		F48BFE8019DAC5FF0106403A /* Pods_WifiInfoPod_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WifiInfoPod_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,6 +58,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C4E06D17154CC2973AE3341 /* Pods_WifiInfoPod_Example.framework in Frameworks */,
+				C641375D22A76B78006381A2 /* NetworkExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +76,7 @@
 		11D1885EB05B2F0AE91FBD63 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C641375C22A76B78006381A2 /* NetworkExtension.framework */,
 				C48E3A87B4BE98FFCC18D6C3 /* Pods_WifiInfoPod_Example.framework */,
 				F48BFE8019DAC5FF0106403A /* Pods_WifiInfoPod_Tests.framework */,
 			);
@@ -219,6 +223,15 @@
 						SystemCapabilities = {
 							com.apple.AccessWiFi = {
 								enabled = 1;
+							};
+							com.apple.HotspotConfiguration = {
+								enabled = 1;
+							};
+							com.apple.NearFieldCommunicationTagReading = {
+								enabled = 1;
+							};
+							com.apple.NetworkExtensions.iOS = {
+								enabled = 0;
 							};
 						};
 					};
